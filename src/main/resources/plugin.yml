@@ -8,4 +8,5 @@ website: "https://github.com/rainestormee"
 commands:
   gh:
     description: "Gives yourself a golden hammer"
-    aliases: [gh, goldenhammer]
+    aliases: [givehammer]
+    permission: "shockwavehammer.give"

@@ -23,7 +23,17 @@ public final class ShockwaveHammer extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        ((Player) sender).getInventory().addItem(Util.getGoldenHammer());
+        Player receiver = null;
+        if (args.length != 0) {
+            receiver = sender.getServer().getOnlinePlayers().stream().filter(r -> ((Player) r).getName().equals(args[0])).findFirst().get();
+
+        }
+        if (receiver == null) {
+            if (!(sender instanceof Player)) return false;
+            receiver = (Player) sender;
+        }
+
+        receiver.getInventory().addItem(Util.getGoldenHammer());
         return true;
     }
 }
