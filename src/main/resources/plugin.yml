@@ -1,0 +1,11 @@
+name: ShockwaveHammer
+version: ${project.version}
+main: com.github.rainestormee.shockwavehammer.ShockwaveHammer
+prefix: ShockwaveHammer
+authors: [RaineTheBoosted]
+description: "A shockwave hammer for VoltNetwork"
+website: "https://github.com/rainestormee"
+commands:
+  gh:
+    description: "Gives yourself a golden hammer"
+    aliases: [gh, goldenhammer]
