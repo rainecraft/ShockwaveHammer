@@ -29,6 +29,12 @@ public class FeatherUseEvent extends ItemHandler implements Listener {
         this.handleEvent(event.getPlayer(), CustomItem.INVIS_FEATHER, event.getItem(), event.getAction());
     }
 
+    @Override
+    public void runLogic(Player player, CustomItem item, ItemStack itemStack, Action action) {
+        this.hidePlayer(player);
+        player.getServer().getScheduler().runTaskLaterAsynchronously(plugin, () -> this.showPlayer(player), 5 * 20L);
+    }
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         hidden.forEach(p -> event.getPlayer().hidePlayer(p));
@@ -36,21 +42,17 @@ public class FeatherUseEvent extends ItemHandler implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        event.getPlayer().getWorld().getPlayers().forEach(p -> p.showPlayer(event.getPlayer()));
+        showPlayer(event.getPlayer());
     }
 
-    @Override
-    public void runLogic(Player player, CustomItem item, ItemStack itemStack, Action action) {
+    public void hidePlayer(Player player) {
         hidden.add(player);
-        player.getServer().getOnlinePlayers().forEach(p -> {
-            p.hidePlayer(player);
-        });
-        player.getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> {
-            hidden.remove(player);
-            player.getServer().getOnlinePlayers().forEach(p -> {
-                if (!p.canSee(player)) p.showPlayer(player);
-            });
-        }, 5000L);
+        player.getWorld().getPlayers().forEach(p -> p.hidePlayer(player));
+    }
+
+    public void showPlayer(Player player) {
+        hidden.remove(player);
+        player.getWorld().getPlayers().stream().filter(p -> !p.canSee(player)).forEach(p -> p.showPlayer(player));
     }
 }
 /**

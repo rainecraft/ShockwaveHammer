@@ -12,11 +12,7 @@ import java.util.UUID;
 
 public abstract class ItemHandler {
 
-    private Map<UUID, Long> cooldowns;
-
-    public ItemHandler() {
-        cooldowns = new HashMap<>();
-    }
+    private Map<UUID, Long> cooldowns = new HashMap<>();
 
     public void handleEvent(Player player, CustomItem item, ItemStack itemStack, Action action) {
         if (!ItemHandler.isRightClick(action) || !CustomItem.checkValid(itemStack) || !item.equals(CustomItem.fromTitle(itemStack.getItemMeta().getDisplayName())))
@@ -25,7 +21,7 @@ public abstract class ItemHandler {
             long timeDifference = System.currentTimeMillis() - cooldowns.get(player.getUniqueId());
             int cooldown = item.getCooldown();
             if (!(timeDifference > cooldown)) {
-                player.sendMessage(item.getErrormesage() + (Math.ceil((cooldown - timeDifference) / 1000F)) + " seconds.");
+                player.sendMessage(item.getErrormesage() + " Cooldown left: " + (Math.ceil((cooldown - timeDifference) / 1000F)) + " seconds.");
                 return;
             }
         }

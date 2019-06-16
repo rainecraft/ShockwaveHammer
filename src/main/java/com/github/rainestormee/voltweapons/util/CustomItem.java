@@ -12,8 +12,8 @@ import java.util.List;
 
 public enum CustomItem {
 
-    SHOCKWAVE_AXE("hammer", Material.GOLD_AXE, "§6Shockwave Hammer", 25, new ArrayList<>(Arrays.asList("§7Right click the ground to unleash a", "§7shockwave that will blast away players near you.")), 25000, "§cYour hammer is currently too hot to be used. Cooldown left: ", Sound.ENDERDRAGON_HIT),
-    INVIS_FEATHER("invis", Material.FEATHER, "Invisibility Feather", 25, new ArrayList<>(Arrays.asList("Some", "LORE")), 45, "Some cooldown message. Cooldown left: ", Sound.CHICKEN_EGG_POP);
+    SHOCKWAVE_AXE("hammer", Material.GOLD_AXE, "§6Shockwave Hammer", 25, new ArrayList<>(Arrays.asList("§7Right click the ground to unleash a", "§7shockwave that will blast away players near you.")), 25000, "§cYour hammer is currently too hot to be used.", Sound.ENDERDRAGON_HIT),
+    INVIS_FEATHER("invis", Material.FEATHER, "Invisibility Feather", 25, new ArrayList<>(Arrays.asList("Some", "LORE")), 45000, "Some cooldown message.", Sound.CHICKEN_EGG_POP);
 
     private String name;
     private Material material;
@@ -94,7 +94,7 @@ public enum CustomItem {
 
     public static CustomItem fromName(String name) {
         return Arrays.stream(CustomItem.values()).filter(c -> c.getName().equals(name.toLowerCase())).findFirst().orElse(null);
-    }
+}
 
     public static boolean checkValid(ItemStack itemStack) {
         return (CustomItem.fromTitle(itemStack.getItemMeta().getDisplayName()) != null);
