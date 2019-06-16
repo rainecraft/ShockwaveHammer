@@ -1,6 +1,6 @@
 package com.github.rainestormee.shockwavehammer;
 
-import com.github.rainestormee.shockwavehammer.events.GroundClickEvent;
+import com.github.rainestormee.shockwavehammer.events.HammerGroundClickEvent;
 import com.github.rainestormee.shockwavehammer.util.Util;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,7 +12,7 @@ public final class ShockwaveHammer extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        this.getServer().getPluginManager().registerEvents(new GroundClickEvent(), this);
+        this.getServer().getPluginManager().registerEvents(new HammerGroundClickEvent(), this);
 
     }
 

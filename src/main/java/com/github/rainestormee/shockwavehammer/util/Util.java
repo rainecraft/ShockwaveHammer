@@ -13,7 +13,7 @@ public class Util {
     public static ItemStack getGoldenHammer() {
         ItemStack is = new ItemStack(Material.GOLD_AXE, 1);
         ItemMeta im = is.getItemMeta();
-        im.setDisplayName("§6Shockwave hammer");
+        im.setDisplayName("§6Shockwave Hammer");
         setMeta(im, 25);
         im.addEnchant(Enchantment.DIG_SPEED, 1, false);
         is.setItemMeta(im);
