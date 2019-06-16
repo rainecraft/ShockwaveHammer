@@ -1,12 +1,12 @@
-name: ShockwaveHammer
+name: VoltWeapons
 version: ${project.version}
-main: com.github.rainestormee.shockwavehammer.ShockwaveHammer
-prefix: ShockwaveHammer
+main: com.github.rainestormee.voltweapons.VoltWeapons
+prefix: VoltWeapons
 authors: [RaineTheBoosted]
-description: "A shockwave hammer for VoltNetwork"
+description: "A custom weapon plugin for VoltNetwork"
 website: "https://github.com/rainestormee"
 commands:
-  gh:
-    description: "Gives yourself a golden hammer"
-    aliases: [givehammer]
-    permission: "shockwavehammer.give"
+  vw:
+    description: "Gives yourself a VoltWeapon."
+    aliases: [voltweapon]
+    permission: "voltweapons.give"
