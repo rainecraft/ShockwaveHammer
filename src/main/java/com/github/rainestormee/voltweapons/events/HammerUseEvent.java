@@ -18,7 +18,7 @@ public class HammerUseEvent extends ItemHandler implements Listener {
 
     @Override
     public void runLogic(Player player, CustomItem item, ItemStack itemStack, Action action) {
-        player.getWorld().getEntities().stream()
+        player.getWorld().getPlayers().stream()
                 .filter(o -> !o.getUniqueId().equals(player.getUniqueId()))
                 .filter(other -> other.getLocation().distanceSquared(player.getLocation()) < 7).forEach(p -> {
             p.setVelocity(p.getLocation().toVector().subtract(player.getLocation().toVector().subtract(new Vector(0, 1, 0))).multiply(1.2));

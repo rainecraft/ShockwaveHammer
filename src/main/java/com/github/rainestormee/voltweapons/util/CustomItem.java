@@ -6,6 +6,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,8 @@ import java.util.List;
 public enum CustomItem {
 
     SHOCKWAVE_AXE("hammer", Material.GOLD_AXE, "§6Shockwave Hammer", 25, new ArrayList<>(Arrays.asList("§7Right click the ground to unleash a", "§7shockwave that will blast away players near you.")), 25000, "§cYour hammer is currently too hot to be used.", Sound.ENDERDRAGON_HIT),
-    INVIS_FEATHER("invis", Material.FEATHER, "Invisibility Feather", 25, new ArrayList<>(Arrays.asList("Some", "LORE")), 45000, "Some cooldown message.", Sound.CHICKEN_EGG_POP);
+    INVIS_FEATHER("invis", Material.FEATHER, "Invisibility Feather", 25, new ArrayList<>(Arrays.asList("Some", "LORE")), 45000, "Some cooldown message.", Sound.CHICKEN_EGG_POP),
+    TNT_ARROW("tnt", Material.TNT, "Explosive Arrow", 25, new ArrayList<>(Arrays.asList("", "")), 30000, "Some cooldown message", Sound.FUSE);
 
     private String name;
     private Material material;

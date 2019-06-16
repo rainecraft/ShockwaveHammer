@@ -31,8 +31,10 @@ public class FeatherUseEvent extends ItemHandler implements Listener {
 
     @Override
     public void runLogic(Player player, CustomItem item, ItemStack itemStack, Action action) {
+        player.sendMessage("You are now invisible.");
         this.hidePlayer(player);
         player.getServer().getScheduler().runTaskLaterAsynchronously(plugin, () -> this.showPlayer(player), 5 * 20L);
+        player.sendMessage("You are now visible!");
     }
 
     @EventHandler

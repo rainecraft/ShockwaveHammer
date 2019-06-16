@@ -1,5 +1,6 @@
 package com.github.rainestormee.voltweapons;
 
+import com.github.rainestormee.voltweapons.events.ExplosionArrow;
 import com.github.rainestormee.voltweapons.events.FeatherUseEvent;
 import com.github.rainestormee.voltweapons.events.HammerUseEvent;
 import com.github.rainestormee.voltweapons.util.CustomItem;
@@ -16,7 +17,11 @@ public final class VoltWeapons extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        this.registerEvents(new FeatherUseEvent(this), new HammerUseEvent());
+        this.registerEvents(
+                new FeatherUseEvent(this),
+                new HammerUseEvent(),
+                new ExplosionArrow()
+        );
     }
 
     @Override
