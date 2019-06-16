@@ -4,6 +4,7 @@ import com.github.rainestormee.voltweapons.events.ExplosionArrow;
 import com.github.rainestormee.voltweapons.events.FeatherUseEvent;
 import com.github.rainestormee.voltweapons.events.HammerUseEvent;
 import com.github.rainestormee.voltweapons.util.CustomItem;
+import com.snowgears.grapplinghook.GrapplingListener;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -20,7 +21,8 @@ public final class VoltWeapons extends JavaPlugin {
         this.registerEvents(
                 new FeatherUseEvent(this),
                 new HammerUseEvent(),
-                new ExplosionArrow()
+                new ExplosionArrow(),
+                new GrapplingListener(this)
         );
     }
 
@@ -32,13 +34,13 @@ public final class VoltWeapons extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
-            sender.sendMessage("/voltweapon [hammer/invis] {player}");
+            sender.sendMessage("/voltweapon [hammer/invis/tnt/grapple] {player}");
             return false;
         }
         System.err.println(String.join("---", args));
         CustomItem item = CustomItem.fromName(args[0]);
         if (item == null) {
-            sender.sendMessage("VoltWeapon not found! Valid options: [hammer/invis]");
+            sender.sendMessage("VoltWeapon not found! Valid options: [hammer/invis/tnt/grapple]");
             return false;
         }
         Player receiver = null;
